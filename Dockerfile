@@ -1,14 +1,13 @@
 FROM debian:stretch
 
-MAINTAINER Christian Luginbühl <dinkel@pimprecords.com>
+MAINTAINER Keyko <root@keyko.io>
 
 ENV OPENLDAP_VERSION 2.4.44
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-        slapd=${OPENLDAP_VERSION}* && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+        slapd=${OPENLDAP_VERSION}* ldapscripts && \
+    apt-get clean 
 
 RUN mv /etc/ldap /etc/ldap.dist
 
